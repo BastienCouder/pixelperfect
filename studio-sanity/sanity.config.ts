@@ -8,8 +8,8 @@ export default defineConfig({
   name:  'default',
   title: 'Sanity Studio',
 
-  projectId: import.meta.env.VITE_SANITY_PROJECT_ID! || 'djtvr81h',
-  dataset:   import.meta.env.VITE_SANITY_DATASET! || 'production',
+  projectId: import.meta.env.VITE_SANITY_PROJECT_ID!,
+  dataset:   import.meta.env.VITE_SANITY_DATASET!,
 
   plugins: [structureTool(), visionTool()],
   schema:   { types: schemaTypes },
