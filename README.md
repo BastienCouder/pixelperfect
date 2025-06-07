@@ -97,6 +97,5 @@ npx serve ./dist
 ```
 Par défaut, le Studio statique est servi sur `http://localhost:3333`.
 
-## Liens Web (exemples)
-- https://votre-site-demo.com
-- https://votre-studio-demo.com
+## Liens Web
+- https://pixelperfect-bastiencouder.netlify.app
