@@ -1,47 +1,86 @@
-# Astro Starter Kit: Minimal
+Astro + Sanity Studio
 
-```sh
-npm create astro@latest -- --template minimal
-```
+## Structure du projet
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+├─ astro.config.mjs
+├─ vite.config.ts
+├─ package.json         # scripts Astro + sync-sanity
+├─ .env                 # variables PUBLIC_ pour Astro
+├─ src/                 # code Astro
+└─ studio-sanity/
+   ├─ vite.config.ts    # envPrefix pour Studio
+   ├─ sanity.config.ts  # config Sanity Studio
+   ├─ package.json      # scripts Studio
+   └─ .env              # variables VITE_ pour Studio
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Variables d’environnement
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Astro (/.env)
 
-Any static assets, like images, can be placed in the `public/` directory.
+PUBLIC_SANITY_PROJECT_ID=VOTRE_PROJECT_ID
+PUBLIC_SANITY_DATASET=production
 
-## 🧞 Commands
+Sanity Studio (/studio-sanity/.env)
 
-All commands are run from the root of the project, from a terminal:
+VITE_SANITY_PROJECT_ID=VOTRE_PROJECT_ID
+VITE_SANITY_DATASET=production
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Scripts NPM
 
-## 👀 Want to learn more?
+Racine – package.json
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+{
+  "scripts": {
+    "dev":         "npm run sync-sanity && astro dev",
+    "sync-sanity": "node ./scripts/fetch-sanity.js",
+    "build":       "astro build",
+    "preview":     "astro preview"
+  }
+}
+
+## Fetch Script$
+   
+// scripts/fetch-sanity.js
+import dotenv from 'dotenv'
+dotenv.config()
+
+import sanityClient from '@sanity/client'
+
+const client = sanityClient({
+  projectId: process.env.PUBLIC_SANITY_PROJECT_ID!,
+  dataset:   process.env.PUBLIC_SANITY_DATASET!,
+  useCdn:    true,
+})
+
+async function main() {
+  // ...
+}
+
+main().catch(console.error)
+
+## Build & Déploiement
+
+## Production build (Astro)
+
+Dans la racine du projet :
+
+npm run build
+
+Ce script génère le dossier dist/ contenant votre site statique.
+
+Pour prévisualiser localement :
+
+npm run preview
+
+Le site tourne alors sur http://localhost:4173.
+
+##  Build Sanity Studio
+
+cd studio-sanity
+npm run build   # génère le dossier `dist/` du Studio
+npx serve ./dist  # sert les fichiers sur un serveur local
+
+Par défaut, le Studio statique est servi sur http://localhost:3333.
+
+🔗 Lien Web (exemples) :
