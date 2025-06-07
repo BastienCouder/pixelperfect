@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/default.astro';
+import BlogPostCard from '../../components/blog-card.astro';
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog");
+---
+
+<Layout>
+  <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 pb-12">
+    <div class="mb-8 text-start">
+      <h1 class="mb-4 text-4xl font-bold text-gray-900">Notre Blog</h1>
+      <p class="max-w-2xl text-md text-gray-600">
+        Découvrez nos derniers articles, tutoriels et conseils sur le développement web, la technologie et le design.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-4">
+      <div class="lg:col-span-3">
+        <h2 class="mb-6 text-xl font-bold">Articles récents</h2>
+        <div class="grid gap-8 sm:grid-cols-2">
+          {posts.map((post) => (
+            <BlogPostCard post={post} />
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

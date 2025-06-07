@@ -1,0 +1,90 @@
+---
+import { formatDate } from "../utils/date";
+import Badge from "./ui/badge.astro";
+import { Image } from "astro:assets";
+
+export interface Props {
+  post: {
+    slug: string;
+    data: {
+      title: string;
+      description?: string;
+      publishDate: Date;
+      updatedDate?: Date;
+      category?: string;
+      author: {
+        name: string;
+        avatar?: string;
+      };
+      readingTime?: string;
+      headings?: Array<{ depth: number; slug: string; text: string }>;
+      imageUrl?: string;
+    };
+  };
+}
+
+const { post } = Astro.props;
+
+// Récupère le slug et toutes les données frontmatter
+const slugCurrent = post.slug;
+const {
+  title,
+  description = "",
+  publishDate,
+  category = "",
+  readingTime = "",
+  updatedDate,
+  imageUrl,
+  author: { name: authorName, avatar: authorAvatarUrl},
+} = post.data;
+console.log(post.data.author);
+// Utiliser || pour que, si avatar vaut "", on prenne bien le placeholder
+const coverImage = imageUrl || "/placeholder.svg?height=400&width=600";
+const avatarImage = authorAvatarUrl || "/placeholder.svg?height=32&width=32";
+---
+
+<article class="overflow-hidden rounded-lg">
+  <a href={`/posts/${slugCurrent}`} class="block">
+    <div class="aspect-video overflow-hidden rounded-lg">
+      <Image
+        src={coverImage}
+        alt={title}
+        class="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
+        width={600}
+        height={400}
+      />
+    </div>
+  </a>
+
+  <div class="mt-3">
+    <div class="mb-3 flex items-center gap-2">
+      {category && <Badge>{category}</Badge>}
+      <span class="text-sm text-gray-500">{formatDate(new Date(publishDate))}</span>
+      {readingTime && (
+        <>
+          <span class="text-sm text-gray-500">•</span>
+          <span class="text-sm text-gray-500">{readingTime}</span>
+        </>
+      )}
+    </div>
+
+    <h3 class="mb-2 text-xl font-bold leading-tight">
+      <a href={`/posts/${slugCurrent}`} class="hover:text-teal-700">{title}</a>
+    </h3>
+
+    {description && <p class="mb-4 text-gray-600">{description}</p>}
+
+    <div class="flex items-center">
+      <div class="mr-3 h-8 w-8 overflow-hidden rounded-full">
+        <Image
+          src={avatarImage}
+          alt={authorName}
+          class="h-full w-full object-cover"
+          width={32}
+          height={32}
+        />
+      </div>
+      <span class="text-sm font-medium">{authorName}</span>
+    </div>
+  </div>
+</article>

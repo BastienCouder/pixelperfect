@@ -1,0 +1,55 @@
+---
+import { ArrowRight, Play } from "@lucide/astro"
+import Badge from "./ui/badge.astro"
+import Button from "./ui/button.astro"
+import { Image } from "astro:assets";
+---
+
+<section class="relative bg-gradient-to-br from-teal-50 to-white py-20">
+    <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <Badge class="mb-6 bg-teal-100 text-teal-800 hover:bg-teal-200">À propos de nous</Badge>
+          <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+            Nous créons l'avenir
+            <span class="block text-teal-800">numérique ensemble</span>
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+            Depuis 2018, nous accompagnons les entreprises dans leur transformation digitale avec passion, expertise
+            et innovation. Notre mission : rendre la technologie accessible et profitable pour tous.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <Button size="lg" class="bg-teal-800 hover:bg-teal-900">
+              Découvrir notre équipe
+              <ArrowRight class="ml-2 w-5 h-5" />
+            </Button>
+            <Button variant="outline" size="lg" class="border-teal-800 text-teal-800 hover:bg-teal-50">
+              <Play class="mr-2 w-5 h-5" />
+              Voir notre histoire
+            </Button>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-teal-100 to-teal-200">
+            <Image
+              src="/images/team.webp"
+              alt="Notre équipe"
+              class="w-full h-full object-cover"
+              width={600}
+              height={600}
+            />
+          </div>
+          <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
+            <div class="text-3xl font-bold text-teal-800">5+</div>
+            <div class="text-sm text-gray-600">Années d'expérience</div>
+          </div>
+          <div class="absolute -top-6 -right-6 bg-white p-6 rounded-xl shadow-lg">
+            <div class="text-3xl font-bold text-teal-800">200+</div>
+            <div class="text-sm text-gray-600">Projets réalisés</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

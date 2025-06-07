@@ -1,0 +1,76 @@
+---
+import Button from "./ui/button.astro";
+import Card from "./ui/card.astro";
+import Avatar from "./ui/avatar.astro";
+import { Star, TrendingUp, Globe, Users } from "@lucide/astro";
+---
+
+<section class="max-w-7xl mx-auto px-4 sm:px-8 lg:px-8 py-6 pb-16 md:py-16">
+  <div class="grid lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <p class="text-sm text-gray-600 mb-4">AGENCE WEB</p>
+      <h1 class="text-3xl lg:text-6xl font-bold text-gray-900 mb-6">
+        Nous créons des <span class="italic">sites web</span> d’exception
+      </h1>
+      <p class="text-sm lg:text-lg text-gray-600 mb-8 max-w-md">
+        PixelPerfect conçoit des expériences digitales uniques, alliant design, performance et innovation pour propulser votre marque en ligne.
+      </p>
+      <div class="flex items-center space-x-4">
+        <Button class="bg-teal-700 hover:bg-teal-800">Commencez Maintenant</Button>
+        <div class="flex items-center space-x-2">
+          <div class="flex">
+            {[...Array(5)].map(() => (
+              <Star class="w-4 h-4 fill-yellow-400 text-yellow-400" />
+            ))}
+          </div>
+          <span class="text-sm text-gray-600">5.0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <Card class="p-6 bg-gray-100 ">
+          <div class="flex items-center justify-between">
+            <div class="md:w-16 md:h-16 h-12 w-12 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
+              <Globe class="w-6 h-6 text-teal-700" />
+            </div>
+          </div>
+          <div class="text-2xl lg:text-3xl font-bold text-teal-700 mb-1">50+</div>
+          <div class="text-sm text-gray-600 mb-3">Projets menés</div>
+          <p class="text-xs text-gray-500">
+            Sites vitrines, boutiques en ligne et applications web sur mesure, de la conception à la mise en ligne.
+          </p>
+        </Card>
+      
+        <Card class="p-6 bg-teal-700 row-span-2">
+            <div class="md:w-16 md:h-16 h-12 w-12 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
+                <TrendingUp class="w-6 h-6 text-teal-700" />
+            </div>
+          <div class="text-2xl lg:text-3xl font-bold mb-2 text-teal-700">100+</div>
+          <div class="text-sm opacity-80 mb-4">Clients satisfaits</div>
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="flex -space-x-2">
+              <Avatar class="w-6 h-6 border-2 border-white" />
+              <Avatar class="w-6 h-6 border-2 border-white" />
+              <Avatar class="w-6 h-6 border-2 border-white" />
+            </div>
+            <span class="text-xs opacity-80">Partout dans le monde</span>
+          </div>
+          <p class="text-sm opacity-80 mb-6">
+            Taux de satisfaction de plus de 98 % grâce à un accompagnement dédié et une qualité de service irréprochable.
+          </p>
+        </Card>
+    
+        <Card class="p-6 bg-primary">
+          <div class="md:w-16 md:h-16 h-12 w-12 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
+            <Users class="w-6 h-6 text-teal-700" />
+          </div>
+          <div class="text-2xl lg:text-3xl font-bold text-teal-700 mb-1">10+</div>
+          <div class="text-sm opacity-80 mb-3">Experts dédiés</div>
+          <p class="text-xs opacity-80">
+            Designers, développeurs et chefs de projet réunis pour concevoir et livrer vos solutions digitales.
+          </p>
+        </Card>
+      </div>
+  </div>
+</section>
