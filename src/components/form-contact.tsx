@@ -50,8 +50,6 @@ export default function ContactForm(props: Props) {
       // Simuler un appel API
       await new Promise((resolve) => setTimeout(resolve, 2000))
 
-      console.log("Form data:", formData)
-
       setSubmitStatus("success")
       setFormData({
         email: "",

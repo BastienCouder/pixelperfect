@@ -17,16 +17,6 @@ export const collections = {
         name: z.string(),
         avatar: z.string().url().optional(),
       }),
-
-      headings: z
-        .array(
-          z.object({
-            depth: z.number().int(),
-            slug: z.string(),
-            text: z.string(),
-          })
-        )
-        .optional(),
     }),
   }),
 };

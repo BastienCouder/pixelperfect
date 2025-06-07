@@ -37,7 +37,6 @@ const {
   imageUrl,
   author: { name: authorName, avatar: authorAvatarUrl},
 } = post.data;
-console.log(post.data.author);
 // Utiliser || pour que, si avatar vaut "", on prenne bien le placeholder
 const coverImage = imageUrl || "/placeholder.svg?height=400&width=600";
 const avatarImage = authorAvatarUrl || "/placeholder.svg?height=32&width=32";

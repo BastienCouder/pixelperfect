@@ -88,40 +88,5 @@ export const postType = defineType({
         type: "string",
         validation: (rule) => rule.required(),
       }),
-  
-      defineField({
-        name: "headings",
-        title: "Titres (headings)",
-        type: "array",
-        of: [
-          {
-            type: "object",
-            fields: [
-              defineField({
-                name: "depth",
-                title: "Niveau de titre (h2=2, h3=3, …)",
-                type: "number",
-                validation: (rule) => rule.required(),
-              }),
-              defineField({
-                name: "slug",
-                title: "Slug du titre (ancre)",
-                type: "string",
-                validation: (rule) => rule.required(),
-              }),
-              defineField({
-                name: "text",
-                title: "Texte du titre",
-                type: "string",
-                validation: (rule) => rule.required(),
-              }),
-            ],
-          },
-        ],
-        validation: (rule) => rule.required().min(1),
-      }),
-
-
-    
   ],
 })

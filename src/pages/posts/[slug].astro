@@ -1,5 +1,5 @@
 ---
-import { getCollection, getEntry } from "astro:content";
+import { getCollection, getEntry, render } from "astro:content";
 import Layout from "../../layouts/default.astro";
 import { formatDate } from "../../utils/date";
 import { Image } from "astro:assets";
@@ -19,8 +19,10 @@ if (!entry) {
   return { notFound: true };
 }
 
+const { Content } = await render(entry);
+
 const post = entry.data;
-const htmlContent = entry.body;
+const content = Content;
 ---
 
 <Layout title={post.title} description={post.description}>
@@ -28,13 +30,11 @@ const htmlContent = entry.body;
     <div class="bg-gradient-to-br from-teal-50 to-white py-12">
       <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-          {
-            post.category && (
-              <Badge class="mb-4 bg-teal-800 text-white">
-                {post.category}
-              </Badge>
-            )
-          }
+          {post.category && (
+            <Badge class="mb-4 bg-teal-800 text-white">
+              {post.category}
+            </Badge>
+          )}
           <h1
             class="mb-6 text-xl md:text-3xl font-bold text-gray-900 sm:text-5xl lg:text-6xl leading-tight"
           >
@@ -54,8 +54,10 @@ const htmlContent = entry.body;
                 class="mr-3 h-12 w-12 overflow-hidden rounded-full bg-gray-100 ring-2 ring-teal-100"
               >
                 <Image
-                  src={post.author.avatar ||
-                    "/placeholder.svg?height=48&width=48"}
+                  src={
+                    post.author.avatar ||
+                    "/placeholder.svg?height=48&width=48"
+                  }
                   alt={post.author.name}
                   class="h-full w-full object-cover"
                   width={48}
@@ -82,27 +84,27 @@ const htmlContent = entry.body;
       </div>
     </div>
 
-    {
-      post.imageUrl && (
-        <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 -mt-8">
-          <div class="overflow-hidden rounded-2xl shadow-2xl">
-            <Image
-              src={post.imageUrl || "/placeholder.svg"}
-              alt={post.title}
-              class="w-full h-[400px] lg:h-[500px] object-cover"
-              width={1200}
-              height={500}
-            />
-          </div>
+    {post.imageUrl && (
+      <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 -mt-8">
+        <div class="overflow-hidden rounded-2xl shadow-2xl">
+          <Image
+            src={post.imageUrl}
+            alt={post.title}
+            class="w-full h-[400px] lg:h-[500px] object-cover"
+            width={1200}
+            height={500}
+          />
         </div>
-      )
-    }
+      </div>
+    )}
+
     <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <article class="bg-white rounded-2xl shadow-sm p-8 lg:p-12">
-            <div class="prose prose-lg prose-teal max-w-none">
-              <div set:html={htmlContent} />
-            </div>
-          </article>
+      <article class="bg-white rounded-2xl shadow-sm p-8 lg:p-12">
+        <div class="prose prose-lg prose-teal max-w-none">
+          <!-- Utilisation de <Content> pour rendre le Markdown/MDX -->
+          <Content content={content} />
+        </div>
+      </article>
     </div>
   </div>
 </Layout>
