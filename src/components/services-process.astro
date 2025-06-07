@@ -1,0 +1,80 @@
+---
+import Card from "./ui/card.astro"
+import { CheckCircle, MessageSquare, Code2, Rocket } from "@lucide/astro"
+
+const processSteps = [
+  {
+    icon: MessageSquare,
+    title: "Consultation",
+    description: "Analyse de vos besoins et définition du projet ensemble",
+    details: ["Audit de l'existant", "Définition des objectifs", "Étude de faisabilité", "Proposition personnalisée"],
+  },
+  {
+    icon: Code2,
+    title: "Développement",
+    description: "Conception et développement de votre solution sur mesure",
+    details: ["Architecture technique", "Développement agile", "Tests continus", "Validation étapes"],
+  },
+  {
+    icon: CheckCircle,
+    title: "Tests & Validation",
+    description: "Tests approfondis et validation avant mise en production",
+    details: ["Tests fonctionnels", "Tests de performance", "Tests utilisateurs", "Corrections finales"],
+  },
+  {
+    icon: Rocket,
+    title: "Déploiement",
+    description: "Mise en ligne et accompagnement post-lancement",
+    details: ["Déploiement sécurisé", "Formation équipes", "Documentation", "Support continu"],
+  },
+]
+---
+
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">Notre Processus de Travail</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Une méthodologie éprouvée pour garantir le succès de vos projets
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {processSteps.map((step, index) => {
+          const IconComponent = step.icon
+          return (
+            <div class="relative">
+              {index < processSteps.length - 1 && (
+                <div class="hidden lg:block absolute top-16 left-full w-full h-0.5 bg-teal-200 z-0">
+                  <div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-teal-800 rounded-full"></div>
+                </div>
+              )}
+
+              <Card class="relative z-10 p-6 text-center hover:shadow-lg transition-shadow">
+                <div class="w-16 h-16 bg-teal-800 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <IconComponent class="w-8 h-8 text-white" />
+                </div>
+
+                <div class="mb-2">
+                  <span class="text-sm font-medium text-teal-800">Étape {index + 1}</span>
+                </div>
+
+                <h3 class="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
+
+                <p class="text-gray-600 mb-4">{step.description}</p>
+
+                <ul class="text-left space-y-2">
+                  {step.details.map((detail, detailIndex) => (
+                    <li class="flex items-center text-sm text-gray-600">
+                      <div class="w-1.5 h-1.5 bg-teal-800 rounded-full mr-3 flex-shrink-0"></div>
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  </section>

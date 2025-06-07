@@ -1,0 +1,70 @@
+---
+import { Phone, Mail, MapPin, Clock } from "@lucide/astro"
+import Badge from "./ui/badge.astro"
+
+const contactInfo = [
+  {
+    icon: Phone,
+    title: "Téléphone",
+    details: ["+33 0 00 00 00 00"],
+    description: "Lun-Ven 9h-18h",
+  },
+  {
+    icon: Mail,
+    title: "Email",
+    details: ["contact@monentreprise.com"],
+    description: "Réponse sous 24h",
+  },
+  {
+    icon: MapPin,
+    title: "Adresse",
+    details: ["15 Rue de la Paix", "75002 Paris, France"],
+    description: "Siège social",
+  },
+  {
+    icon: Clock,
+    title: "Horaires",
+    details: ["Lun-Ven: 9h-18h", "Sam: 10h-16h"],
+    description: "Fermé le dimanche",
+  },
+]
+---
+
+<section class="relative bg-gradient-to-br from-teal-50 to-white py-20">
+    <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <Badge class="mb-6 bg-teal-100 text-teal-800 hover:bg-teal-200">Contactez-nous</Badge>
+        <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+          Parlons de votre
+          <span class="block text-teal-800">projet ensemble</span>
+        </h1>
+        <p class="text-sm md:text-base text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Notre équipe d'experts est à votre disposition pour discuter de vos besoins et vous proposer des solutions
+          sur mesure. Contactez-nous dès aujourd'hui !
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {contactInfo.map((info) => {
+          const IconComponent = info.icon
+          return (
+            <div class="text-center">
+              <div class="w-12 h-12 md:w-16 md:h-16 bg-teal-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                <IconComponent class="w-6 md:w-8 h-6 md:h-8 text-white" />
+              </div>
+              <h2 class="text-lg font-bold text-gray-900 mb-2">{info.title}</h2>
+              <div class="space-y-1 mb-2">
+                {info.details.map((detail) => (
+                  <p class="text-gray-700 font-medium">
+                    {detail}
+                  </p>
+                ))}
+              </div>
+              <p class="text-sm text-gray-500">{info.description}</p>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  </section>

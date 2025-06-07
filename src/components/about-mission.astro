@@ -1,0 +1,63 @@
+---
+import Card from "./ui/card.astro"
+import { Target, Eye, Heart } from "@lucide/astro"
+
+const values = [
+  {
+    icon: Target,
+    title: "Notre Mission",
+    description:
+      "Démocratiser l'accès aux technologies digitales pour permettre à chaque entreprise de prospérer dans l'économie numérique.",
+    details: ["Accompagnement personnalisé", "Solutions sur mesure", "Transfert de compétences", "Innovation continue"],
+  },
+  {
+    icon: Eye,
+    title: "Notre Vision",
+    description:
+      "Devenir le partenaire de référence pour la transformation digitale des entreprises françaises et européennes.",
+    details: ["Leadership technologique", "Expansion européenne", "Écosystème d'innovation", "Impact positif"],
+  },
+  {
+    icon: Heart,
+    title: "Nos Valeurs",
+    description: "L'excellence, la transparence et l'humain au cœur de chacune de nos actions et décisions.",
+    details: ["Éthique et transparence", "Collaboration et respect", "Excellence technique", "Responsabilité sociale"],
+  },
+]
+---
+
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">Ce qui nous guide</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Nos principes fondamentaux qui orientent chaque décision et chaque projet
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {values.map((value, index) => {
+          const IconComponent = value.icon
+          return (
+            <Card class="p-8 text-center hover:shadow-xl transition-all duration-300">
+              <div class="w-16 h-16 bg-teal-800 rounded-full flex items-center justify-center mx-auto mb-6">
+                <IconComponent class="w-8 h-8 text-white" />
+              </div>
+
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">{value.title}</h3>
+              <p class="text-gray-600 mb-6 leading-relaxed">{value.description}</p>
+
+              <ul class="space-y-3">
+                {value.details.map((detail) => (
+                  <li class="flex items-center justify-center text-sm text-gray-600">
+                    <div class="w-2 h-2 bg-teal-800 rounded-full mr-3"></div>
+                    {detail}
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          )
+        })}
+      </div>
+    </div>
+  </section>

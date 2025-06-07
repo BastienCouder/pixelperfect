@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+
+export interface Props {
+  src?: string;
+  alt?: string;
+  initials?: string;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  class?: string;
+}
+
+const {
+  src,
+  alt = '',
+  initials,
+  size = 'md',
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const sizes = {
+  xs: 'w-6 h-6 text-xs',
+  sm: 'w-8 h-8 text-sm',
+  md: 'w-10 h-10 text-base',
+  lg: 'w-12 h-12 text-lg',
+  xl: 'w-16 h-16 text-xl',
+};
+
+const classes = [
+  'inline-flex items-center justify-center rounded-full overflow-hidden bg-gray-200 text-gray-600 font-medium',
+  sizes[size],
+  className,
+];
+---
+
+<div class:list={classes} {...rest}>
+  {
+    src ? (
+      <Image src={src || "/placeholder.svg"} alt={alt} class="w-full h-full object-cover" width={100} height={100}/>
+    ) : (
+      <span>{initials}</span>
+    )
+  }
+</div>

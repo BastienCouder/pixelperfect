@@ -1,9 +1,414 @@
 ---
 import Layout from "../layouts/default.astro";
 import Button from "../components/ui/button.astro";
+import Card from "../components/ui/card.astro";
+import Badge from "../components/ui/badge.astro";
+import {
+	ArrowUpRight,
+	Globe,
+	Eye,
+	Sparkles,
+	Shield,
+	ChevronDown,
+} from "@lucide/astro";
+import Hero from "../components/hero.astro";
+import Company from "../components/company";
 ---
 
 <Layout>
-	<h1 class="text-3xl font-bold">Astro</h1>
-	<Button size="sm">Test</Button>
+	<div class="min-h-screen bg-gray-50">
+		<Hero />
+		<Company />
+		<div
+			class="text-center mb-12 bg-teal-700 text-white px-4 sm:px-6 lg:px-8 py-12 my-16"
+		>
+			<h2 class="text-2xl md:text-4xl font-bold mb-4">
+				Un site pour tous vos besoins digitaux
+			</h2>
+			<p class="text-lg max-w-2xl mx-auto">
+				PixelPerfect transforme votre idée en une expérience en ligne
+				fluide, performante et mémorable.
+			</p>
+		</div>
+
+		<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 pt-8">
+			<div class="grid md:grid-cols-2 gap-8">
+				<Card class="p-8 bg-teal-700">
+					<h3 class="text-xl md:text-2xl font-bold mb-4 text-teal-800">
+						Design sur-mesure
+					</h3>
+					<div class="text-2xl md:text-3xl font-bold mb-8">
+						Interfaces uniques
+					</div>
+
+					<p class="mb-6">
+						Chez PixelPerfect, chaque projet démarre par une étude
+						approfondie de votre identité de marque et des attentes
+						de vos utilisateurs :
+					</p>
+					<ul class="list-disc list-inside space-y-2 mb-8">
+						<li>
+							Wireframes et maquettes interactives pour valider
+							l’UX/UI.
+						</li>
+						<li>
+							Charte graphique personnalisée reflétant votre ADN
+							visuel.
+						</li>
+						<li>
+							Tests utilisateurs en conditions réelles pour
+							affiner les parcours.
+						</li>
+						<li>
+							Design accessible pour toucher un maximum
+							d’audience.
+						</li>
+					</ul>
+
+					<p class="text-sm mb-4">
+						Résultat : une interface sur-mesure, optimisée pour
+						engager vos utilisateurs et convertir vos prospects.
+					</p>
+					<div class="flex justify-end">
+						<a
+							href="/services#design"
+							class="inline-flex items-center px-4 py-2 border border-teal-800 rounded-full text-sm font-semibold text-teal-800 hover:bg-teal-800 hover:text-white transition"
+						>
+							Voir nos réalisations
+							<ArrowUpRight class="w-4 h-4 ml-2" />
+						</a>
+					</div>
+				</Card>
+
+				<Card class="p-8 bg-gray-100">
+					<h3 class="text-xl md:text-2xl font-bold mb-4 text-teal-800">
+						Développement performant
+					</h3>
+
+					<div class="space-y-6">
+						<div class="flex items-center justify-between">
+							<div class="flex items-center space-x-3">
+								<div
+									class="w-12 h-8 bg-gray-300 rounded flex items-center justify-center"
+								>
+									<Globe class="w-6 h-6 text-gray-600" />
+								</div>
+								<span class="font-semibold text-gray-800"
+									>Stack moderne (AstroJS, React, Node.js)</span
+								>
+							</div>
+							<Badge class="bg-teal-700 text-white"
+								>Expertise</Badge
+							>
+						</div>
+
+						<div class="flex items-center justify-between">
+							<div
+								class="flex items-center flex-col items-start space-y-2"
+							>
+								<span class="font-semibold text-gray-800"
+									>Sécurité renforcée</span
+								>
+								<span class="text-sm text-gray-600"
+									>HTTPS, CSP & audits réguliers</span
+								>
+							</div>
+						</div>
+					</div>
+
+					<p class="text-sm text-gray-600 mt-6 mb-4">
+						Nous appliquons les meilleures pratiques Web
+						(lazy-loading, code splitting, optimisation d’images) et
+						garantissons un score Lighthouse > 90.
+					</p>
+
+					<div class="flex justify-end">
+						<a
+							href="/services#dev"
+							class="inline-flex items-center px-4 py-2 border border-teal-700 rounded-full text-sm font-semibold text-teal-700 hover:bg-teal-700 hover:text-white transition"
+						>
+							En savoir plus
+							<ArrowUpRight class="w-4 h-4 ml-2" />
+						</a>
+					</div>
+				</Card>
+			</div>
+		</section>
+
+		<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-16">
+			<div class="grid lg:grid-cols-2 md:gap-12 items-start px-2">
+				<div>
+					<h2 class="text-xl md:text-4xl font-bold text-gray-900 md:mb-8">
+						Optimisez votre présence en ligne
+					</h2>
+				</div>
+				<div>
+					<p class="text-lg text-gray-600">
+						Notre approche combine design, performance et stratégie
+						pour vous aider à atteindre vos objectifs numériques.
+					</p>
+				</div>
+			</div>
+
+			<div class="grid md:grid-cols-3 gap-8 mt-4 md:mt-12">
+				<Card class="p-8">
+					<Eye class="w-8 md:w-12 h-8 md:h-12 text-teal-700 mb-6" />
+					<h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+						Design Responsive
+					</h3>
+					<p class="text-gray-600 mb-4">
+						Chaque projet démarre par une approche mobile-first :
+					</p>
+					<ul
+						class="list-disc list-inside text-gray-600 space-y-2 mb-6"
+					>
+						<li>
+							Tests sur tous les appareils (smartphones,
+							tablettes, desktop).
+						</li>
+						<li>
+							Grilles flexibles et points de rupture optimisés
+							pour votre audience.
+						</li>
+						<li>
+							Images et médias adaptatifs pour réduire les temps
+							de chargement.
+						</li>
+					</ul>
+					<p class="text-gray-600 mb-6">
+						Nous utilisons Tailwind CSS et des composants
+						réutilisables pour garantir une cohérence parfaite sur
+						chaque écran.
+					</p>
+					<Button variant="outline" size="sm" class="rounded-full">
+						<ArrowUpRight class="w-4 h-4" /> Voir nos réalisations
+					</Button>
+				</Card>
+
+				<Card class="p-8">
+					<Sparkles class="w-8 md:w-12 h-8 md:h-12 text-teal-700 mb-6" />
+					<h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+						SEO Avancé
+					</h3>
+					<p class="text-gray-600 mb-4">
+						Pour que votre site soit visible dès le premier clic,
+						nous prenons en charge :
+					</p>
+					<ul
+						class="list-disc list-inside text-gray-600 space-y-2 mb-6"
+					>
+						<li>
+							Audit sémantique et choix de mots-clés pertinents.
+						</li>
+						<li>
+							Optimisation des balises meta, titres et
+							descriptions.
+						</li>
+						<li>
+							Mise en place de schémas JSON-LD pour les rich
+							snippets.
+						</li>
+						<li>
+							Amélioration du temps de chargement (Core Web
+							Vitals).
+						</li>
+					</ul>
+					<p class="text-gray-600 mb-6">
+						Résultat : un meilleur positionnement, plus de trafic
+						organique et un taux de conversion en hausse.
+					</p>
+					<Button variant="outline" size="sm" class="rounded-full">
+						<ArrowUpRight class="w-4 h-4" /> Découvrir notre expertise
+						SEO
+					</Button>
+				</Card>
+
+				<Card class="p-8 bg-gray-100">
+					<Shield class="w-8 md:w-12 h-8 md:h-12 text-teal-700 mb-6" />
+					<h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+						Support Continu
+					</h3>
+					<p class="text-gray-600 mb-4">
+						Après la mise en ligne, notre équipe reste à vos côtés :
+					</p>
+					<ul
+						class="list-disc list-inside text-gray-600 space-y-2 mb-6"
+					>
+						<li>
+							Maintenance et mises à jour régulières du CMS et des
+							dépendances.
+						</li>
+						<li>
+							Surveillance 24/7 et alertes en cas d’anomalie ou de
+							faille de sécurité.
+						</li>
+						<li>
+							Backups automatisés et restauration rapide en cas de
+							besoin.
+						</li>
+						<li>
+							Support technique prioritaire via chat, e-mail ou
+							téléphone.
+						</li>
+					</ul>
+					<p class="text-gray-600 mb-6">
+						Notre SLA garantit un temps de réponse inférieur à 2
+						heures pour toute urgence.
+					</p>
+					<Button variant="outline" size="sm" class="rounded-full">
+						<ArrowUpRight class="w-4 h-4" /> Contacter le support
+					</Button>
+				</Card>
+			</div>
+		</section>
+
+		<section class="bg-teal-700 text-background py-6 md:py-16">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="grid md:grid-cols-3 gap-8 items-center">
+					<div>
+						<div class="text-2xl md:text-5xl font-bold mb-2">200+</div>
+						<div class="text-lg opacity-90">Projets réalisés</div>
+					</div>
+					<div>
+						<div class="text-2xl md:text-5xl font-bold mb-2">100+</div>
+						<div class="text-lg opacity-90">Clients satisfaits</div>
+					</div>
+					<div>
+						<h3 class="text-xl md:text-2xl font-bold mb-4">
+							Faites confiance à notre expertise
+						</h3>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section
+			class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16"
+			client:"visible"
+		>
+			<div class="grid md:grid-cols-2 gap-12">
+				<div>
+					<p class="text-sm text-gray-600 mb-4">FAQ</p>
+					<h2 class="text-2xl md:text-4xl font-bold text-gray-900">
+						Questions fréquentes
+					</h2>
+				</div>
+				<div class="space-y-4">
+					<div class="faq-item border-b pb-4">
+						<button
+							class="faq-btn w-full flex justify-between items-center text-left"
+						>
+							<h3 class="font-semibold text-gray-900">
+								Comment se déroule la prise de contact ?
+							</h3>
+							<ChevronDown
+								class="w-5 h-5 text-gray-400 transition-transform transform"
+							/>
+						</button>
+						<p class="faq-answer mt-2 text-sm text-gray-600 hidden">
+							Pour nous joindre, utilisez le formulaire sur la
+							page « Contact », envoyez un email ou appelez-nous.
+							Nous revenons vers vous sous 24 heures pour
+							organiser un premier rendez-vous.
+						</p>
+					</div>
+
+					<div class="faq-item border-b pb-4">
+						<button
+							class="faq-btn w-full flex justify-between items-center text-left"
+						>
+							<h3 class="font-semibold text-gray-900">
+								Quels sont vos tarifs ?
+							</h3>
+							<ChevronDown
+								class="w-5 h-5 text-gray-400 transition-transform transform"
+							/>
+						</button>
+						<p class="faq-answer mt-2 text-sm text-gray-600 hidden">
+							Nos prix dépendent de la complexité et des
+							fonctionnalités demandées. Après un brief initial,
+							nous réalisons un devis 100 % gratuit et sans
+							engagement.
+						</p>
+					</div>
+
+					<div class="faq-item border-b pb-4">
+						<button
+							class="faq-btn w-full flex justify-between items-center text-left"
+						>
+							<h3 class="font-semibold text-gray-900">
+								Quel est le délai moyen de réalisation ?
+							</h3>
+							<ChevronDown
+								class="w-5 h-5 text-gray-400 transition-transform transform"
+							/>
+						</button>
+						<p class="faq-answer mt-2 text-sm text-gray-600 hidden">
+							Un site vitrine standard prend généralement 4 à 6
+							semaines. Une boutique en ligne ou une appli sur
+							mesure peut nécessiter 8 à 12 semaines, selon les
+							allers-retours de validation.
+						</p>
+					</div>
+
+					<div class="faq-item border-b pb-4">
+						<button
+							class="faq-btn w-full flex justify-between items-center text-left"
+						>
+							<h3 class="font-semibold text-gray-900">
+								Dois-je fournir mes contenus ?
+							</h3>
+							<ChevronDown
+								class="w-5 h-5 text-gray-400 transition-transform transform"
+							/>
+						</button>
+						<p class="faq-answer mt-2 text-sm text-gray-600 hidden">
+							Nous vous recommandons de nous transmettre vos
+							textes, images et vidéos pour refléter votre
+							activité. Si vous n’avez pas tout préparé, notre
+							équipe peut prendre en charge la rédaction ou la
+							sélection de contenus.
+						</p>
+					</div>
+
+					<div class="faq-item border-b pb-4">
+						<button
+							class="faq-btn w-full flex justify-between items-center text-left"
+						>
+							<h3 class="font-semibold text-gray-900">
+								Offrez-vous un support après la mise en ligne ?
+							</h3>
+							<ChevronDown
+								class="w-5 h-5 text-gray-400 transition-transform transform"
+							/>
+						</button>
+						<p class="faq-answer mt-2 text-sm text-gray-600 hidden">
+							Oui, nous proposons un contrat de maintenance
+							mensuelle incluant mises à jour, sauvegardes et
+							support technique prioritaire. Vous pouvez aussi
+							prendre un support ponctuel selon vos besoins.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
 </Layout>
+
+<script>
+	const faqButtons = document.querySelectorAll(".faq-btn");
+
+	faqButtons.forEach((btn) => {
+		btn.addEventListener("click", () => {
+			const answer = btn.nextElementSibling;
+			const icon = btn.querySelector("svg");
+
+			if (answer) {
+				answer.classList.toggle("hidden");
+			}
+			if (icon) {
+				icon.classList.toggle("rotate-180");
+			}
+		});
+	});
+</script>

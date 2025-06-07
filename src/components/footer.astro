@@ -1,0 +1,95 @@
+---
+import { Twitter, Linkedin, Mail } from "@lucide/astro";
+import Button from "./ui/button.astro";
+---
+
+<footer class="bg-teal-700 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-xl md:text-2xl font-bold mb-4">PixelPerfect</h3>
+        <p class="text-white opacity-90 mb-6">
+          Agence web spécialisée dans la création de sites et d’applications
+          sur-mesure. Design, performance et support continu.
+        </p>
+        <div class="flex space-x-4">
+          <a
+            href="https://twitter.com"
+            aria-label="Twitter"
+            class="hover:text-gray-300"
+          >
+            <Twitter class="w-6 h-6" />
+          </a>
+          <a
+            href="https://linkedin.com"
+            aria-label="LinkedIn"
+            class="hover:text-gray-300"
+          >
+            <Linkedin class="w-6 h-6" />
+          </a>
+          <a
+            href="mailto:contact@pixelperfect.fr"
+            aria-label="Email"
+            class="hover:text-gray-300"
+          >
+            <Mail class="w-6 h-6" />
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-xl md:text-2xl font-semibold mb-4">Liens rapides</h4>
+        <ul class="space-y-2 text-white opacity-90">
+          <li>
+            <a href="/services" class="hover:text-white transition" data-astro-prefetch>Services</a>
+          </li>
+          <li>
+            <a href="/about" class="hover:text-white transition" data-astro-prefetch>À propos</a>
+          </li>
+          <li>
+            <a href="/blog" class="hover:text-white transition" data-astro-prefetch>Blog</a>
+          </li>
+          <li>
+            <a href="/contact" class="hover:text-white transition" data-astro-prefetch>Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-xl md:text-2xl font-semibold mb-4">Newsletter</h4>
+        <p class="text-white opacity-90 mb-4">
+          Inscrivez-vous pour recevoir nos dernières actualités et articles
+          techniques.
+        </p>
+        <form class="flex space-x-2">
+          <label for="email-newsletter" class="sr-only">Adresse email</label>
+          <input
+            id="email-newsletter"
+            type="email"
+            placeholder="Votre email"
+            class="w-full px-4 py-2 rounded-l-lg bg-gray-100 text-gray-800 placeholder-gray-500 focus:outline-none"
+          />
+          <Button variant="outline" class="bg-white hover:bg-gray-100 rounded-r-lg text-emerald-700">
+            S’inscrire
+          </Button>
+        </form>
+      </div>
+    </div>
+    <div class="border-t border-teal-600 mt-12"></div>
+    <div
+      class="flex flex-col md:flex-row justify-between items-center mt-6 text-white opacity-90 text-sm"
+    >
+      <p class="mb-4 md:mb-0">
+        &copy; 2025 PixelPerfect. Tous droits réservés.
+      </p>
+      <div class="flex space-x-4">
+        <a href="/privacy" class="text-sm md:text-base hover:text-white transition"
+          >Politique de confidentialité</a
+        >
+        <a href="/terms" class="text-sm md:text-base hover:text-white transition"
+          >Conditions générales</a
+        >
+      </div>
+    </div>
+  </div>
+</footer>

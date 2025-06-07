@@ -1,0 +1,29 @@
+---
+import Badge from "./ui/badge.astro"
+import Button from "./ui/button.astro"
+---
+
+<section class="relative bg-gradient-to-br from-teal-50 to-white py-20 pb-10">
+    <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <Badge class="mb-6 bg-teal-100 text-teal-800 hover:bg-teal-200">Nos Services</Badge>
+        <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold text-gray-900 mb-6">
+          Des solutions sur mesure pour
+          <span class="block text-teal-800">votre réussite</span>
+        </h1>
+        <p class="text-sm md:text-base text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Nous accompagnons votre entreprise dans sa transformation digitale avec des services innovants et
+          personnalisés, adaptés à vos besoins spécifiques.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button size="lg" class="bg-teal-800 hover:bg-teal-900">
+            Découvrir nos services
+          </Button>
+          <Button variant="outline" size="lg" class="border-teal-800 text-teal-800 hover:bg-teal-50">
+            Demander un devis
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>

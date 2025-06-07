@@ -1,0 +1,141 @@
+---
+import Card from "./ui/card.astro"
+import Badge from "./ui/badge.astro"
+import Button from "./ui/button.astro"
+import { Code, Smartphone, Globe, Search, Shield, BarChart3, Palette, Headphones, Zap } from "@lucide/astro"
+
+const services = [
+  {
+    icon: Code,
+    title: "Développement Web",
+    description: "Applications web modernes et performantes avec les dernières technologies.",
+    features: ["React/Next.js", "Node.js", "TypeScript", "API REST"],
+    price: "À partir de 2 500€",
+    popular: false,
+  },
+  {
+    icon: Smartphone,
+    title: "Applications Mobile",
+    description: "Applications natives et cross-platform pour iOS et Android.",
+    features: ["React Native", "Flutter", "Swift", "Kotlin"],
+    price: "À partir de 5 000€",
+    popular: true,
+  },
+  {
+    icon: Globe,
+    title: "Sites Web Vitrine",
+    description: "Sites web élégants et optimisés pour présenter votre activité.",
+    features: ["Design responsive", "CMS intégré", "Optimisation SEO", "Analytics"],
+    price: "À partir de 1 200€",
+    popular: false,
+  },
+  {
+    icon: Search,
+    title: "Référencement SEO",
+    description: "Optimisation pour les moteurs de recherche et stratégie de contenu.",
+    features: ["Audit SEO", "Optimisation technique", "Content marketing", "Suivi analytics"],
+    price: "À partir de 800€/mois",
+    popular: false,
+  },
+  {
+    icon: Palette,
+    title: "Design UI/UX",
+    description: "Conception d'interfaces utilisateur intuitives et attractives.",
+    features: ["Wireframing", "Prototypage", "Design system", "Tests utilisateurs"],
+    price: "À partir de 1 500€",
+    popular: false,
+  },
+  {
+    icon: Shield,
+    title: "Cybersécurité",
+    description: "Protection et sécurisation de vos systèmes et données.",
+    features: ["Audit sécurité", "Mise en conformité", "Formation équipes", "Monitoring"],
+    price: "À partir de 2 000€",
+    popular: false,
+  },
+  {
+    icon: BarChart3,
+    title: "Analytics & Data",
+    description: "Analyse de données et tableaux de bord personnalisés.",
+    features: ["Business Intelligence", "Dashboards", "Data visualization", "Reporting"],
+    price: "À partir de 1 800€",
+    popular: false,
+  },
+  {
+    icon: Zap,
+    title: "Automatisation",
+    description: "Automatisation de processus métier et intégrations.",
+    features: ["Workflows", "API Integration", "RPA", "Process optimization"],
+    price: "À partir de 3 000€",
+    popular: false,
+  },
+  {
+    icon: Headphones,
+    title: "Support & Maintenance",
+    description: "Maintenance continue et support technique dédié.",
+    features: ["Support 24/7", "Mises à jour", "Monitoring", "Backup"],
+    price: "À partir de 300€/mois",
+    popular: false,
+  },
+]
+---
+
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">Nos Services Experts</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Une gamme complète de services digitaux pour accompagner votre croissance
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {services.map((service) => {
+          const IconComponent = service.icon
+          return (
+            <Card
+              class={`relative p-8 hover:shadow-xl transition-all duration-300 ${
+                service.popular ? "ring-2 ring-teal-800 shadow-lg" : ""
+              }`}
+            >
+              {service.popular && (
+                <Badge class="absolute -top-3 left-6 bg-teal-800 text-white">Populaire</Badge>
+              )}
+
+              <div class="mb-6">
+                <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+                  <IconComponent class="w-6 h-6 text-teal-800" />
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
+                <p class="text-gray-600 mb-4">{service.description}</p>
+              </div>
+
+              <div class="mb-6">
+                <h4 class="font-semibold text-gray-900 mb-3">Inclus :</h4>
+                <ul class="space-y-2">
+                  {service.features.map((feature) => (
+                    <li  class="flex items-center text-sm text-gray-600">
+                      <div class="w-1.5 h-1.5 bg-teal-800 rounded-full mr-3"></div>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="border-t pt-6">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-2xl font-bold text-teal-800">{service.price}</span>
+                </div>
+                <Button
+                  class="w-full bg-teal-800 hover:bg-teal-900 hover:text-white"
+                  variant={service.popular ? "primary" : "outline"}
+                >
+                  En savoir plus
+                </Button>
+              </div>
+            </Card>
+          )
+        })}
+      </div>
+    </div>
+  </section>

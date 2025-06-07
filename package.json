@@ -3,14 +3,32 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "sync-sanity": "node ./scripts/fetch-sanity.js",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "build:blog": "npm run sync-sanity && astro build",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/react": "^4.3.0",
+    "@lucide/astro": "^0.513.0",
+    "@sanity/astro": "^3.2.6",
+    "@sanity/block-content-to-markdown": "^1.0.0",
+    "@sanity/client": "^6.29.1",
+    "@sanity/image-url": "^1.1.0",
     "@tailwindcss/vite": "^4.1.8",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
     "astro": "^5.8.2",
+    "astro-portabletext": "^0.11.1",
+    "dotenv": "^16.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-is": "^16.13.1",
+    "sanity": "^3.91.0",
+    "styled-components": "^6.1.18",
+    "tailwind-merge": "^3.3.0",
     "tailwindcss": "^4.1.8"
   }
 }

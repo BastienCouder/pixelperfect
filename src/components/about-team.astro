@@ -1,0 +1,94 @@
+---
+import Card from "./ui/card.astro"
+import Badge from "./ui/badge.astro"
+import Avatar from "./ui/avatar.astro"
+import { Linkedin, Twitter, Github } from "@lucide/astro"
+
+const teamMembers = [
+  {
+    name: "Alexandre Dubois",
+    role: "CEO & Fondateur",
+    avatar: "/images/profile-1.webp",
+    bio: "10 ans d'expérience dans le développement web et la direction d'équipes techniques.",
+    skills: ["Leadership", "Stratégie", "Full-Stack"],
+    social: {
+      linkedin: "/about",
+      twitter: "/about",
+      github: "/about",
+    },
+  },
+  {
+    name: "Sophie Martin",
+    role: "CTO",
+    avatar: "/images/profile-2.webp",
+    bio: "Experte en architecture logicielle et passionnée par les nouvelles technologies.",
+    skills: ["Architecture", "DevOps", "Cloud"],
+    social: {
+      linkedin: "/about",
+      twitter: "/about",
+      github: "/about",
+    },
+  },
+  {
+    name: "Thomas Lefebvre",
+    role: "Lead Developer",
+    avatar: "/images/profile-3.webp",
+    bio: "Développeur senior spécialisé en React, Node.js et technologies modernes.",
+    skills: ["React", "Node.js", "TypeScript"],
+    social: {
+      linkedin: "/about",
+      github: "/about",
+    },
+  },
+]
+---
+
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold text-gray-900 mb-4">Notre Équipe</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Des experts passionnés qui donnent vie à vos projets digitaux
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {teamMembers.map((member) => (
+          <Card class="p-6 text-center hover:shadow-xl transition-all duration-300">
+            <Avatar class="w-24 h-24 mx-auto mb-4" src={member.avatar}>
+            </Avatar>
+
+            <h3 class="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
+            <p class="text-emerald-800 font-medium mb-3">{member.role}</p>
+            <p class="text-gray-600 text-sm mb-4 leading-relaxed">{member.bio}</p>
+
+            <div class="flex flex-wrap gap-2 justify-center mb-4">
+              {member.skills.map((skill) => (
+                <Badge variant="secondary" class="text-xs">
+                  {skill}
+                </Badge>
+              ))}
+            </div>
+
+            <div class="flex justify-center space-x-3">
+              {member.social.linkedin && (
+                <a href={member.social.linkedin} class="text-gray-400 hover:text-emerald-800 transition-colors" aria-label="Linkedin">
+                  <Linkedin class="w-5 h-5" />
+                </a>
+              )}
+              {member.social.twitter && (
+                <a href={member.social.twitter} class="text-gray-400 hover:text-emerald-800 transition-colors" aria-label="Twitter">
+                  <Twitter class="w-5 h-5" />
+                </a>
+              )}
+              {member.social.github && (
+                <a href={member.social.github} class="text-gray-400 hover:text-emerald-800 transition-colors" aria-label="Github">
+                  <Github class="w-5 h-5" />
+                </a>
+              )}
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  </section>
